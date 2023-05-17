@@ -13,6 +13,8 @@ import {
   loadCSS,
 } from './lib-franklin.js';
 
+import('./flickity.pkgd.min.js');
+
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
 /**
@@ -105,6 +107,7 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+  loadCSS(`${window.hlx.codeBasePath}/styles/flickity.css`);
   addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
@@ -118,6 +121,8 @@ async function loadLazy(doc) {
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
+  window.setTimeout(() => import('./flickity.pkgd.min.js'), 3000);
+
   // load anything that can be postponed to the latest here
 }
 
